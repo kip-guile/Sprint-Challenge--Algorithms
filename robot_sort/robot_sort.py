@@ -105,21 +105,20 @@ class SortingRobot:
         """
         # Fill this out
 
-        while self.light_is_on():
-            while self.can_move_left():
-                self.move_left()
-            while self.can_move_right():
+        while self.can_move_left():
+            self.move_left()
+        while self.can_move_right():
+            self.swap_item()
+            self.move_right()
+            if self.compare_item() == 1:
                 self.swap_item()
-                self.move_right()
-                if self.compare_item() == 1:
-                    self.swap_item()
 
-                    self.move_left()
-                    self.swap_item()
-                else:
-                    self.move_left()
-                    self.swap_item()
-                self.move_right()
+                self.move_left()
+                self.swap_item()
+            else:
+                self.move_left()
+                self.swap_item()
+            self.move_right()
 
 
 if __name__ == "__main__":
